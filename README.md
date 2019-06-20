@@ -36,3 +36,5 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 t1: 自动化配置夜间模式
 t2: 自定义首页
 t3: 自定义去除广告
+
+6.19 只实现简单的蒙层

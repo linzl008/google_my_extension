@@ -9,7 +9,10 @@ import {
     Slider,
     Tabs,
     TabPane,
-    Switch
+    Switch,
+    Input,
+    Select,
+    Option
 } from 'element-ui';
 
 Vue.use(Card);
@@ -18,6 +21,9 @@ Vue.use(Slider);
 Vue.use(Tabs);
 Vue.use(TabPane);
 Vue.use(Switch);
+Vue.use(Input);
+Vue.use(Select);
+Vue.use(Option);
 
 new Vue({
     el: "#app",

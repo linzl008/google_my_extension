@@ -5,16 +5,16 @@ import {
 
 // 通过Chrome插件的API加载字体文件
 (function insertElementIcons() {
-    /*let elementIcons = document.createElement('style')
+    let elementIcons = document.createElement('style')
     elementIcons.type = 'text/css';
     elementIcons.textContent = `
         @font-face {
             font-family: "element-icons";
             src: url('${ window.chrome.extension.getURL("fonts/element-icons.woff")}') format('woff'),
-            url('${ window.chrome.extension.getURL("fonts/element-icons.ttf ")}') format('truetype'); /!* chrome, firefox, opera, Safari, Android, iOS 4.2+*!/
+            url('${ window.chrome.extension.getURL("fonts/element-icons.ttf ")}') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
         }
     `
-    document.head.appendChild(elementIcons);*/
+    document.head.appendChild(elementIcons);
     todoTask();
 })();
 
@@ -37,10 +37,9 @@ window.chrome.runtime.onMessage.addListener(function(request, sender, sendRespon
 });
 window.addEventListener("message", function(e)
 {
-    // Message.info('dispatchMyEvent')
     dispatchMyEvent(e.data);
 }, false);
-function dispatchMyEvent(request, sender={}, sendResponse={}) {
+function dispatchMyEvent(request) {
     // Message.info('dispatchMyEvent')
     switch(request.cmd ){
         case 'test':
