@@ -4,12 +4,12 @@ const path = require("path");
 
 // Generate pages object
 const pagesObj = {};
-const chromeName = ["popup", "options"];
+const chromeName = ["popup", "options",'tab'];
 
 chromeName.forEach(name => {
   pagesObj[name] = {
     entry: `src/${name}/index.js`,
-    template: "public/index.html",
+    template: `src/${name}/index.html`,
     filename: `${name}.html`
   };
 });
@@ -23,9 +23,15 @@ const manifest =
     from: path.resolve("src/manifest.development.json"),
     to: `${path.resolve("dist")}/manifest.json`
   };
+// 复制images文件,icon图标
+const images =
+ {
+    from: path.resolve("src/images"),
+    to: `${path.resolve("dist")}/images`
+  }
 
 const plugins = [
-  CopyWebpackPlugin([manifest])
+  CopyWebpackPlugin([manifest,images])
 ]
 
 // 开发环境将热加载文件复制到dist文件夹

@@ -1,0 +1,171 @@
+$bgcolor: #e0e7f0;
+$frameColor: #E0E0E0;
+$btnFrontColot: #03a4ee;
+$buttonColor: #8896b4;
+$borderColor: #d1d2e0;
+$inputFrameColor: #a5a6bb;
+$mianFamilyColor: #333;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  font-size: 100px;
+
+  body {
+    height: 100%;
+    //min-width: 1366px;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    font-size: 16px;
+    color: $mianFamilyColor;
+  }
+}
+
+i {
+  font-style: normal;
+}
+
+ul, li {
+  list-style: none;
+}
+
+textarea {
+  font-family: "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", "微软雅黑";
+}
+
+// 滑动条1(主体内容)
+.scrollbarStyle1::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: #F5F5F5;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+.scrollbarStyle1::-webkit-scrollbar-track {
+  background-color: #F5F5F5;
+  border-radius: 3px;
+}
+
+/*定义滑块 内阴影+圆角*/
+.scrollbarStyle1::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+// 滑动条2(menu侧边栏)
+.scrollbarStyle2::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background-color: #21273a;
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+.scrollbarStyle2::-webkit-scrollbar-track {
+  background-color: #21273a;
+  border-radius: 3px;
+}
+
+/*定义滑块 内阴影+圆角*/
+.scrollbarStyle2::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+
+// 清除浮动
+.clearfix:after {
+  content: "";
+  display: table;
+  height: 0;
+  visibility: both;
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1; /* IE/7/6*/
+}
+
+// 通用样式
+.fr {
+  float: right;
+}
+
+.width100p {
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: visible;
+}
+
+.vcenter {
+  display: flex;
+  align-items: center;
+}
+
+.fbold {
+  font-weight: bold;
+}
+
+.pt10 {
+  padding-top: 10px;
+}
+
+.plr10 {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.plr20 {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.plr40 {
+  padding-right: 40px;
+  padding-left: 40px;
+}
+
+.status-right {
+  color: #008000
+}
+
+.status-error {
+  color: #FF0000
+}
+
+.status-normal {
+  color: #999
+}
+
+
+.t-center {
+  text-align: center;
+}
+
+.t-right {
+  text-align: right;
+}
+
+.t-left {
+  text-align: left;
+}
+
+.flex-v-center {
+  display: flex;
+  align-items: center;
+}
+
+.ml20 {
+  margin-left: 20px;
+}
+
+.bdb {
+  border-bottom: 1px solid #f3f7fd;
+}
+
+
+
+
+
+
