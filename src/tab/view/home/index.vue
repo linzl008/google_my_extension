@@ -1,18 +1,23 @@
 <template>
     <el-container class="home">
         <div class="main-box">
-            <el-input placeholder="请输入内容" v-model="keyWord"  class="input-with-select">
-                <el-select v-model="select" slot="prepend" placeholder="请选择">
-                    <el-option label="百度" value="baidu"></el-option>
-                    <el-option label="谷歌" value="google"></el-option>
-                </el-select>
-                <el-button slot="append" icon="el-icon-search" @click="search">搜索</el-button>
-            </el-input>
+            <weather></weather>
+            <div>
+                <el-input placeholder="请输入内容" v-model="keyWord"  class="input-with-select">
+                    <el-select v-model="select" slot="prepend" placeholder="请选择">
+                        <el-option label="百度" value="baidu"></el-option>
+                        <el-option label="谷歌" value="google"></el-option>
+                    </el-select>
+                    <el-button slot="append" icon="el-icon-search" @click="search">搜索</el-button>
+                </el-input>
+            </div>
+
         </div>
     </el-container>
 </template>
 
 <script>
+    import weather from '../../components/home/weather'
     export default {
         name: "index",
         data(){
@@ -20,6 +25,9 @@
                 keyWord:"",
                 select:"baidu"
             }
+        },
+        components:{
+            weather
         },
         created(){
             this.getBoswerHistory()

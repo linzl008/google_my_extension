@@ -52,9 +52,9 @@ import {
     Col,
     Upload,
 
+    Card,
    /* Progress,
     Badge,
-    Card,
     Rate,
     Steps,
     Step,
@@ -125,7 +125,7 @@ Vue.use(Upload);
 
 // Vue.use(Progress);
 // Vue.use(Badge);
-// Vue.use(Card);
+Vue.use(Card);
 // Vue.use(Rate);
 // Vue.use(Steps);
 // Vue.use(Step);

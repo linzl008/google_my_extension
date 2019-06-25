@@ -2,10 +2,9 @@
   background-image: url('../../assets/images/bg-default.jpg');
   background-position: center center;
   .main-box{
+    position: relative;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-align: center;
     .el-select .el-input {
       width: 130px;
     }

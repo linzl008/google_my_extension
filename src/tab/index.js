@@ -1,5 +1,6 @@
 import Vue from "vue";
 import AppComponent from "./App.vue";
+import './plugins/axios'
 
 import router from "./router";
 // Vue.component("app-component", AppComponent);
