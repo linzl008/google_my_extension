@@ -21,7 +21,13 @@
                 select:"baidu"
             }
         },
+        created(){
+            this.getBoswerHistory()
+        },
         methods:{
+            getBoswerHistory(){
+                console.log(history.state.notheme);
+            },
             search(){
                 switch (this.select) {
                     case "baidu" :

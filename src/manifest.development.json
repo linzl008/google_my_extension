@@ -29,7 +29,8 @@
     [
         "storage",
         "http://*/*",
-        "https://*/*"
+        "https://*/*",
+        "history"
     ],
     "web_accessible_resources": ["fonts/*"],
     "icons": {
