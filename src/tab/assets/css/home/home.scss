@@ -1,10 +1,22 @@
 .home{
   background-image: url('../../assets/images/bg-default.jpg');
   background-position: center center;
+  overflow-y: scroll;
+  overflow-x: auto;
   .main-box{
     position: relative;
-    width: 100%;
+    width: 99.8%;
     text-align: center;
+    display: flex;
+    .weather{
+      width: 300px;
+    }
+    .middle-box{
+      flex:1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .el-select .el-input {
       width: 130px;
     }

@@ -28,6 +28,7 @@
     "permissions":
     [
         "storage",
+        "geolocation",
         "http://*/*",
         "https://*/*",
         "history"

@@ -1,8 +1,7 @@
 <template>
     <el-container class="home">
         <div class="main-box">
-            <weather></weather>
-            <div>
+            <div class="middle-box">
                 <el-input placeholder="请输入内容" v-model="keyWord"  class="input-with-select">
                     <el-select v-model="select" slot="prepend" placeholder="请选择">
                         <el-option label="百度" value="baidu"></el-option>
@@ -11,30 +10,40 @@
                     <el-button slot="append" icon="el-icon-search" @click="search">搜索</el-button>
                 </el-input>
             </div>
-
+            <div class="weather">
+                <weather @addCity="citySearchVisible=true" ></weather>
+            </div>
         </div>
+        <!--城市搜索弹框-->
+        <citySearch :visible="citySearchVisible" @select="selectCity" @close="citySearchVisible=false"></citySearch>
     </el-container>
 </template>
 
 <script>
     import weather from '../../components/home/weather'
+    import citySearch from '../../components/home/city-search'
     export default {
         name: "index",
         data(){
             return{
                 keyWord:"",
-                select:"baidu"
+                select:"baidu",
+                citySearchVisible:false
             }
         },
         components:{
-            weather
+            weather, citySearch
         },
         created(){
-            this.getBoswerHistory()
+            this.getBoswerHistory();
         },
         methods:{
             getBoswerHistory(){
                 console.log(history.state.notheme);
+            },
+            selectCity(data){
+                let citys = localStorage.getItem('lzl_weather_citys');
+                citys = new Set(citys.split(','))
             },
             search(){
                 switch (this.select) {
