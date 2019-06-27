@@ -6,6 +6,12 @@
     color:#fff;
     width:290px;
     margin-bottom: 10px;
+    position: relative;
+    .el-icon-close{
+      position: absolute;
+      top:5px;
+      right:5px;
+    }
     .tmp{
       position: relative;
       strong{

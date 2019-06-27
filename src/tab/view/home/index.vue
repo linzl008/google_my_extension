@@ -10,8 +10,8 @@
                     <el-button slot="append" icon="el-icon-search" @click="search">搜索</el-button>
                 </el-input>
             </div>
-            <div class="weather">
-                <weather @addCity="citySearchVisible=true" ></weather>
+            <div class="weather-box">
+                <weather @addCity="citySearchVisible=true" @deleteCity="deleteCity" :myCities="myCities"></weather>
             </div>
         </div>
         <!--城市搜索弹框-->
@@ -28,7 +28,8 @@
             return{
                 keyWord:"",
                 select:"baidu",
-                citySearchVisible:false
+                citySearchVisible:false,
+                myCities:[]
             }
         },
         components:{
@@ -37,13 +38,29 @@
         created(){
             this.getBoswerHistory();
         },
+        mounted(){
+          this.initData()
+        },
         methods:{
+            initData(){
+                this.myCities = JSON.parse(localStorage.getItem('lzl_weather_cities')||"[]");
+            },
             getBoswerHistory(){
                 console.log(history.state.notheme);
             },
             selectCity(data){
-                let citys = localStorage.getItem('lzl_weather_citys');
-                citys = new Set(citys.split(','))
+                console.log({data});
+                let cities = JSON.parse(localStorage.getItem('lzl_weather_cities')||"[]");
+                cities  = (new Set(cities.filter(i=>i)))
+                cities.add(data.cid);
+                cities = new Array(...cities);
+                localStorage.setItem('lzl_weather_cities',JSON.stringify(cities));
+                this.myCities = cities;
+                this.$message.success('已添加城市');
+            },
+            deleteCity(index){
+                this.myCities.splice(index,1);
+                localStorage.setItem('lzl_weather_cities',JSON.stringify(this.myCities));
             },
             search(){
                 switch (this.select) {

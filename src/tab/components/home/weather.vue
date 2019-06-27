@@ -4,14 +4,29 @@
             <div slot="header" class="clearfix">
                 <div class="tmp"><strong>{{local.now.tmp}}</strong>℃
                     <div class="cond_txt">{{local.now.cond_txt}}</div>
-                    <img class="weather-logo fr" :src="picUrl+local.now.cond_code+'.png'"/>
+                    <img class="weather-logo fr" :src="picUrl+local.now.cond_code+isNight(local)+'.png'"/>
                 </div>
-                <div><i class="el-icon-location"></i>{{local.basic.cnty}},{{local.basic.admin_area}},{{local.basic.location}}</div>
-<!--                <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>-->
+                <div><i class="el-icon-location"></i>{{local.basic| location}}</div>
             </div>
             <div>
                 <div class="time">
                     <i class="el-icon-time"></i> {{local.update.loc}}
+                    <span class="fr">来源：和风天气</span>
+                </div>
+            </div>
+        </el-card>
+        <el-card v-for="(item,index) in myCitesData" :key="index" class="box-card">
+            <div slot="header" class="clearfix">
+                <div class="tmp"><strong>{{item.now.tmp}}</strong>℃
+                    <div class="cond_txt">{{item.now.cond_txt}}</div>
+                    <img class="weather-logo fr" :src="picUrl+item.now.cond_code+isNight(item)+'.png'"/>
+                </div>
+                <div><i class="el-icon-location"></i>{{item.basic | location}}</div>
+                <i class="el-icon-close" @click="deleteCity(index)"></i>
+            </div>
+            <div>
+                <div class="time">
+                    <i class="el-icon-time"></i> {{item.update.loc}}
                     <span class="fr">来源：和风天气</span>
                 </div>
             </div>
@@ -28,12 +43,27 @@
     import homeApi from '../../api/home'
     export default {
         name: "weather",
+        props:{
+            myCities:Array,
+        },
         data(){
             return {
                 currentDate: new Date(),
                 local:{},
+                myCitesData:[],
                 picUrl:"https://cdn.heweather.com/cond_icon/"
             }
+        },
+        watch:{
+            myCities(newVal,oldVal){
+                this.getMyCitiesWeather()
+            }
+        },
+        filters:{
+          location(basic){
+              let parent_city  = basic.parent_city === basic.location? '':','+basic.parent_city;
+              return `${basic.cnty},${basic.admin_area}${parent_city},${basic.location}`
+          }
         },
         mounted() {
             this.getWeatherNow()
@@ -42,11 +72,33 @@
             addCity(){
                 this.$emit('addCity')
             },
+            deleteCity(index){
+                this.$emit('deleteCity',index);
+            },
             getWeatherNow(){
                 homeApi.getWeatherNow({location:"auto_ip"}).then(res=>{
                     console.log(res);
                     this.local = res.HeWeather6[0] || {}
                 })
+            },
+            isNight(item){
+                let nPicList = ['100','103','104','300','301','406','407'];
+                let code = item?item.now.cond_code:"";
+                let str = item?item.update.loc:"";
+                let time = new Date(str);
+                let hour = time.getHours();
+                return (!(hour >= 6 && hour <18) && code.indexOf(nPicList)>=0)?'n':''
+            },
+            async getMyCitiesWeather(){
+                console.log('start',this.myCities);
+                let myCitesData = [];
+                for (let i = 0; i < this.myCities.length; i++) {
+                    const cid = this.myCities[i];
+                    let res = await homeApi.getWeatherNow({location:cid})
+                    myCitesData.push(res.HeWeather6[0]);
+                }
+                this.myCitesData = myCitesData;
+                console.log(this.myCitesData);
             }
         }
     }
