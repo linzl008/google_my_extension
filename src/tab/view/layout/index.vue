@@ -9,14 +9,10 @@
                              text-color="#fff"
                              active-text-color="#ffd04b"
                              :collapse="isCollapse">
-                        <el-menu-item index="/home" class="submenu-title" >
-                            <i class="el-icon-s-home"></i>
-                            <span slot="title">首页</span>
+                        <el-menu-item v-for="item in menu" :index="item.index" :key="item.key" class="submenu-title" >
+                            <i :class="item.icon"></i>
+                            <span slot="title">{{item.label}}</span>
                         </el-menu-item>
-                        <!--<el-menu-item index="/setting" class="submenu-title" >
-                            <i class="el-icon-s-tools"></i>
-                            <span slot="title">设置</span>
-                        </el-menu-item>-->
                     </el-menu>
                     <div class="collapse-icon-box">
                         <i class="collapse-icon el-icon-s-fold" v-if="!isCollapse" @click="isCollapse=!isCollapse"></i>
@@ -33,18 +29,26 @@
 </template>
 
 <script>
-
+    import { mapGetters } from 'vuex';
     export default {
         name: 'app',
         data() {
             return {
                 isCollapse: false,
                 isRouterAlive: true, //刷新当前页面
-                showMenuHeader:true
+                showMenuHeader:true,
             }
         },
+        computed: {
+            ...mapGetters(
+                { menu:'menu/getMenu' },
+            )
+        },
         mounted(){
-
+            let menu = JSON.parse(localStorage.getItem('lzl_menu')||"[]");
+            if(menu.length){
+                this.$store.dispatch('menu/setMenu',menu);
+            }
         },
         methods: {
             //折叠侧边栏

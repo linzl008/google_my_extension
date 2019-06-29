@@ -46,10 +46,9 @@
                 this.myCities = JSON.parse(localStorage.getItem('lzl_weather_cities')||"[]");
             },
             getBoswerHistory(){
-                console.log(history.state.notheme);
+                // console.log(history.state.notheme);
             },
             selectCity(data){
-                console.log({data});
                 let cities = JSON.parse(localStorage.getItem('lzl_weather_cities')||"[]");
                 cities  = (new Set(cities.filter(i=>i)))
                 cities.add(data.cid);

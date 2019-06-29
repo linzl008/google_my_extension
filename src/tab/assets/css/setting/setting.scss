@@ -1,0 +1,12 @@
+.setting{
+  overflow-y: scroll;
+  overflow-x: auto;
+  .main-box{
+    padding:20px;
+    position: relative;
+    width: 99.8%;
+    text-align: center;
+    //display: flex;
+
+  }
+}

@@ -77,7 +77,6 @@
             },
             getWeatherNow(){
                 homeApi.getWeatherNow({location:"auto_ip"}).then(res=>{
-                    console.log(res);
                     this.local = res.HeWeather6[0] || {}
                 })
             },
@@ -98,7 +97,6 @@
                     myCitesData.push(res.HeWeather6[0]);
                 }
                 this.myCitesData = myCitesData;
-                console.log(this.myCitesData);
             }
         }
     }
