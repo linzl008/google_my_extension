@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import menu from './modules/menu'
+import menu from './modules/menu/menu'
 import createLogger from 'vuex/dist/logger'
 
 Vue.use(Vuex)

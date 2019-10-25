@@ -41,13 +41,13 @@
         },
         computed: {
             ...mapGetters(
-                { menu:'menu/getMenu' },
+                { menu:'menu/GET_MENU' },
             )
         },
         mounted(){
             let menu = JSON.parse(localStorage.getItem('lzl_menu')||"[]");
             if(menu.length){
-                this.$store.dispatch('menu/setMenu',menu);
+                this.$store.dispatch('menu/SET_MENU',menu);
             }
         },
         methods: {

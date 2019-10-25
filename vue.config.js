@@ -29,9 +29,15 @@ const images =
     from: path.resolve("src/images"),
     to: `${path.resolve("dist")}/images`
   }
+// 复制live2D文件
+const live2D =
+ {
+    from: path.resolve("src/tab/assets/live2d"),
+    to: `${path.resolve("dist")}/live2d`
+  }
 
 const plugins = [
-  CopyWebpackPlugin([manifest,images])
+  CopyWebpackPlugin([manifest,images,live2D])
 ]
 
 // 开发环境将热加载文件复制到dist文件夹
@@ -74,7 +80,6 @@ module.exports = {
       // chunkFilename: 'css/[name].css'
     }
   },
-
 
   chainWebpack: config => {
     // 处理字体文件名，去除hash值

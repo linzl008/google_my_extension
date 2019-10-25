@@ -2,8 +2,8 @@
     <div class="weather">
         <el-card class="box-card">
             <div slot="header" class="clearfix">
-                <div class="tmp"><strong>{{local.now.tmp}}</strong>℃
-                    <div class="cond_txt">{{local.now.cond_txt}}</div>
+                <div class="tmp"><strong>{{local.now?local.now.tmp:'--'}}</strong>℃
+                    <div class="cond_txt">{{local.now?local.now.cond_txt:'--'}}</div>
                     <img class="weather-logo fr" :src="picUrl+local.now.cond_code+isNight(local)+'.png'"/>
                 </div>
                 <div><i class="el-icon-location"></i>{{local.basic| location}}</div>
@@ -49,7 +49,11 @@
         data(){
             return {
                 currentDate: new Date(),
-                local:{},
+                local:{
+                    now:{},
+                    basic:{},
+                    update:{}
+                },
                 myCitesData:[],
                 picUrl:"https://cdn.heweather.com/cond_icon/"
             }
@@ -82,10 +86,11 @@
             },
             isNight(item){
                 let nPicList = ['100','103','104','300','301','406','407'];
-                let code = item?item.now.cond_code:"";
-                let str = item?item.update.loc:"";
+                let code = item.now.cond_code?item.now.cond_code:"";
+                let str = item.update?item.update.loc:"";
                 let time = new Date(str);
                 let hour = time.getHours();
+                console.log(code);
                 return (!(hour >= 6 && hour <18) && code.indexOf(nPicList)>=0)?'n':''
             },
             async getMyCitiesWeather(){

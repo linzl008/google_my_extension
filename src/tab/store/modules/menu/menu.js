@@ -1,41 +1,41 @@
-
+import *  as TYPE from './mutation-types'
 // initial state
 // shape: [{ id, quantity }]
 const state = {
     menu: [
         { label :"首页" ,icon:"el-icon-s-home" ,index:"/home", isShow:true},
         { label :"设置" ,icon:"el-icon-s-tools" ,index:"/setting", isShow:true},
+        { label :"文件处理" ,icon:"el-icon-document" ,index:"/file", isShow:true},
     ],
 }
 
 // getters
 const getters = {
-    getMenu: (state, getters, rootState) => {
+    [TYPE.GET_MENU]: (state, getters, rootState) => {
         return state.menu.filter(item => item.isShow);
     },
-    getAllMenu: (state, getters, rootState) => {
+    [TYPE.GET_ALL_MENU]: (state, getters, rootState) => {
         return state.menu;
     },
 }
 
 // actions
 const actions = {
-    setMenu({ state, commit }, newMenu){
-        commit('setMenu', newMenu);
+    [TYPE.SET_MENU]({ state, commit }, newMenu){
+        commit(TYPE.SET_MENU, newMenu);
     },
-    toggleMenuState({ state, commit }, index){
-        commit('toggleMenuState', index);
+    [TYPE.TOOGLE_MENU]({ state, commit }, index){
+        commit(TYPE.TOOGLE_MENU, index);
     }
 }
 
 // mutations
 const mutations = {
-    setMenu(state,newMenu){
-        console.log('enter mutations');
+    [TYPE.SET_MENU](state,newMenu){
         state.menu = newMenu;
         localStorage.setItem('lzl_menu',JSON.stringify(state.menu));
     },
-    toggleMenuState(state,index){
+    [TYPE.TOOGLE_MENU](state,index){
         state.menu[index].isShow = !state.menu[index].isShow;
         localStorage.setItem('lzl_menu',JSON.stringify(state.menu));
     }

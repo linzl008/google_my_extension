@@ -32,9 +32,6 @@
         },
         mounted(){},
         watch:{
-            menu(newVal,oldVal){
-                this.list = JSON.parse(JSON.stringify(newVal));
-            },
         },
         methods:{
             toggleMenuState(row,index){

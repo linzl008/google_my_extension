@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <router-view></router-view>
+
   </div>
 </template>
 
@@ -20,7 +21,7 @@ export default {
     // this.$store.state.subChannelId = localStorage.getItem("firePower-subChannelId");
   },
   mounted() {
-    
+
   },
   methods: {
     reload (){
@@ -29,7 +30,7 @@ export default {
           this.isRouterAlive = true
        })
     }
-    // getSelfMenu(){// »ñÈ¡µ±Ç°ÕËºÅ¿É¼ûµÄ²Ëµ¥
+    // getSelfMenu(){// ï¿½ï¿½È¡ï¿½ï¿½Ç°ï¿½ËºÅ¿É¼ï¿½ï¿½Ä²Ëµï¿½
     //   this.$axios.post("/userOperate/getMenu",{ type: 'self'}).then(response => {
     //       if(!response.data.ret){
     //           for (var item in response.data.data){
@@ -41,7 +42,7 @@ export default {
     //   })
     // },
 
-    // getBelongList(){//»ñÈ¡¹éÊôÊ÷×´Í¼
+    // getBelongList(){//ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Í¼
     //   var subChannelId = localStorage.getItem("firePower-subChannelId");
     //   this.$axios.post("/userCompany/getTree",{ subChannelId: subChannelId}).then(response => {
     //       if(!response.data.ret){
@@ -52,7 +53,7 @@ export default {
     //   })
     // },
 
-    // getEquipTypeList(){// »ñÈ¡Éè±¸ÀàÐÍÁÐ±í
+    // getEquipTypeList(){// ï¿½ï¿½È¡ï¿½è±¸ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
     //   this.$axios.post("/deviceCategory/getList").then(response => {
     //       if(!response.data.ret){
     //         this.$store.state.equipTypeList = response.data.data.list;
@@ -61,7 +62,7 @@ export default {
     //       }
     //   })
     // },
-    
+
 
   }
 };

@@ -1,0 +1,48 @@
+.note{
+  margin: 10px 5px 50px 5px;
+  text-align: left;
+  .box-card{
+    background: rgba(3, 7, 38, 0.5);
+    color:#fff;
+    width:290px;
+    margin-bottom: 10px;
+    position: relative;
+    .el-icon-close{
+      position: absolute;
+      top:5px;
+      right:5px;
+    }
+    .el-icon-edit{
+      position: absolute;
+      top:5px;
+      right:30px;
+    }
+    .tmp{
+      position: relative;
+      strong{
+        font-size: 30px;
+        vertical-align: top;
+      }
+      .cond_txt{
+        font-size: 12px;
+        line-height: 16px;
+      }
+      .weather-logo{
+        width: 50px;
+        position: absolute;
+        top:0px;
+        right:0px
+      }
+    }
+    .time{
+      font-size: 12px;
+      line-height: 15px;
+    }
+    .el-card__body{
+      padding: 10px
+    }
+  }
+  .box-card.add{
+    border-style: dashed;
+  }
+}
