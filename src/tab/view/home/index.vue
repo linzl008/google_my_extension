@@ -1,10 +1,9 @@
 <template>
     <el-container class="home">
         <div class="main-box">
-            <div class="weather-box">
-                <note></note>
-            </div>
+            <div class="weather-box"></div>
             <div class="middle-box">
+                <clock />
                 <el-input placeholder="请输入内容" v-model="keyWord"  class="input-with-select">
                     <el-select v-model="select" slot="prepend" placeholder="请选择">
                         <el-option label="百度" value="baidu"></el-option>
@@ -24,7 +23,8 @@
 
 <script>
     import weather from '../../components/home/weather'
-    import note from '../../components/home/note'
+    import clock from '../../components/home/clock'
+    // import note from '../../components/home/note'
     import citySearch from '../../components/home/city-search'
     export default {
         name: "index",
@@ -37,7 +37,7 @@
             }
         },
         components:{
-            weather, citySearch ,note
+            weather, citySearch ,clock
         },
         created(){
             this.getBoswerHistory();

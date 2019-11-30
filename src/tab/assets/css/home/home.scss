@@ -16,7 +16,9 @@
       flex:1;
       display: flex;
       align-items: center;
+      flex-direction: column;
       justify-content: center;
+      position: relative;
     }
     .el-select .el-input {
       width: 130px;

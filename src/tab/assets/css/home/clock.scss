@@ -1,0 +1,16 @@
+.clock {
+  position: absolute;
+  top: 20%;
+  text-align: center;
+  //margin-bottom: 100px;
+}
+.clock .M-Flipper {
+  margin: 0 3px;
+}
+.clock em {
+  display: inline-block;
+  line-height: 135px;
+  font-size: 99px;
+  font-style: normal;
+  vertical-align: top;
+}
