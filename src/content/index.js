@@ -16,6 +16,7 @@ import {
     `
     document.head.appendChild(elementIcons);
     todoTask();
+    setWorkSite()
 })();
 
 function todoTask(){
@@ -51,6 +52,7 @@ function dispatchMyEvent(request) {
     }
 }
 function setCover(opacity) {
+    console.log('setCover');
     let myCoverDialog = document.getElementsByClassName('lzl-dialog')[0];
     if(myCoverDialog){
         myCoverDialog.style.outlineColor = 'rgba(0,0,0,' + opacity + ')';
@@ -60,5 +62,18 @@ function setCover(opacity) {
         div.setAttribute('style', 'position:fixed;top:0;left:0;outline:5000px solid;z-index:99999;');
         document.body.appendChild(div);
         div.style.outlineColor = 'rgba(0,0,0,' + opacity + ')';
+    }
+}
+
+/**
+ * 设置小说网站的背景
+ */
+function setWorkSite() {
+    // https://m.uctxt.com/
+    if(window.location.href.indexOf('https://m.uctxt.com/')>=0){
+        window.onload = function(){
+                document.getElementById('BookBody').style.background = 'none'
+                document.getElementById('BookTitle').style.fontWeight = 'normal'
+        }
     }
 }
