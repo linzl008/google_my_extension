@@ -2,7 +2,8 @@
     <div class="layout">
         <div class="main-container">
             <el-container>
-                <el-aside width="auto">
+                <router-view></router-view>
+                <!--<el-aside width="auto">
                     <el-menu :default-active="$route.path" class="menu-wrapper scrollbarStyle2"
                              router
                              background-color="#545c64"
@@ -22,7 +23,7 @@
                 <keep-alive>
                     <router-view v-if="$route.meta.keepAlive"></router-view>
                 </keep-alive>
-                <router-view v-if="!$route.meta.keepAlive && isRouterAlive"></router-view>
+                <router-view v-if="!$route.meta.keepAlive && isRouterAlive"></router-view>-->
             </el-container>
         </div>
     </div>

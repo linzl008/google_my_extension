@@ -4,13 +4,14 @@
             <div class="weather-box"></div>
             <div class="middle-box">
                 <clock />
-                <el-input placeholder="请输入内容" v-model="keyWord"  class="input-with-select">
+                <el-input placeholder="请输入内容" v-model="keyWord"  @keyup.enter.native.prevent.once="search"  class="input-with-select">
                     <el-select v-model="select" slot="prepend" placeholder="请选择">
                         <el-option label="百度" value="baidu"></el-option>
                         <el-option label="谷歌" value="google"></el-option>
                     </el-select>
                     <el-button slot="append" icon="el-icon-search" @click="search">搜索</el-button>
                 </el-input>
+                <mymenu></mymenu>
             </div>
             <div class="weather-box">
                 <weather @addCity="citySearchVisible=true" @deleteCity="deleteCity" :myCities="myCities"></weather>
@@ -23,8 +24,8 @@
 
 <script>
     import weather from '../../components/home/weather'
+    import mymenu from '../../components/home/menu'
     import clock from '../../components/home/clock'
-    // import note from '../../components/home/note'
     import citySearch from '../../components/home/city-search'
     export default {
         name: "index",
@@ -37,10 +38,9 @@
             }
         },
         components:{
-            weather, citySearch ,clock
+            weather, citySearch ,clock,mymenu
         },
         created(){
-            this.getBoswerHistory();
         },
         mounted(){
           this.initData()
@@ -48,9 +48,6 @@
         methods:{
             initData(){
                 this.myCities = JSON.parse(localStorage.getItem('lzl_weather_cities')||"[]");
-            },
-            getBoswerHistory(){
-                // console.log(history.state.notheme);
             },
             selectCity(data){
                 let cities = JSON.parse(localStorage.getItem('lzl_weather_cities')||"[]");

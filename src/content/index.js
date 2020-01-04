@@ -17,6 +17,15 @@ import {
     document.head.appendChild(elementIcons);
     todoTask();
     setWorkSite()
+    // 注册panel
+    console.log('register');
+    // chrome.devtools.panels.create("Font Picker",
+    //     "FontPicker.png",
+    //     "panel.html",
+    //     function(panel) {
+    //     console.log(panel);
+    //     }
+    // );
 })();
 
 function todoTask(){
@@ -31,8 +40,6 @@ function todoTask(){
 
 window.chrome.runtime.onMessage.addListener(function(request, sender, sendResponse)
 {
-    // console.log(sender.tab ?"from a content script:" + sender.tab.url :"from the extension");
-    // if(request.cmd == 'test') alert(request.value);
     dispatchMyEvent(request, sender, sendResponse)
     sendResponse(request.cmd+' end！');
 });
@@ -52,7 +59,7 @@ function dispatchMyEvent(request) {
     }
 }
 function setCover(opacity) {
-    console.log('setCover');
+    console.log('setCover',opacity);
     let myCoverDialog = document.getElementsByClassName('lzl-dialog')[0];
     if(myCoverDialog){
         myCoverDialog.style.outlineColor = 'rgba(0,0,0,' + opacity + ')';

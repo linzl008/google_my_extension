@@ -1,17 +1,21 @@
 <template>
     <el-tabs type="border-card" v-model="tab">
         <el-tab-pane label="遮罩" name="0">
-            <h3>是否全局使用
-                <el-switch class="fr" v-model="globalUse" @change="toggleGlobalCover"></el-switch>
-            </h3>
             <div class="box-card">
                 <h3>增加半透明遮罩
-                    <el-button class="fr" size="mini" @click="confirm">确认</el-button>
+                    <span class="slider-block" >
+                        <div class="display-dialog" :style="{background: 'rgba(0,0,0,'+slider/100+')'}"></div>
+                        {{slider}}
+                    </span>
                 </h3>
                 <div>
-                    <el-slider v-model="slider"></el-slider>
+                    <el-slider v-model="slider" ></el-slider>
                 </div>
             </div>
+            <el-button-group class="fr">
+                <el-button type="primary"  size="mini" @click="confirm">全局设置</el-button>
+                <el-button type="primary"  size="mini" @click="confirmSingle">当前页设置</el-button>
+            </el-button-group>
         </el-tab-pane>
         <el-tab-pane label="翻译" name="1">
             <div class="box-card translate" >
@@ -74,11 +78,18 @@
         },
         methods: {
             confirm() {
+                window.chrome.storage.sync.set({lzlGlobalUseCover: this.globalUse});
+                window.chrome.storage.sync.set({lzlGlobalUseCoverOpacity: this.slider});
                 sendMes({cmd: 'setCover', value: (this.slider / 100)},function (e) {
-                    console.log(e+'end');
+                    console.log(e);
                 })
             },
-             debounce(fn, wait) {
+            confirmSingle() {
+                sendMes({cmd: 'setCover', value: (this.slider / 100)},function (e) {
+                    console.log(e);
+                })
+            },
+            debounce(fn, wait) {
                 var timeout = null;
                 return function() {
                     if(timeout !== null)   clearTimeout(timeout);
@@ -126,10 +137,6 @@
                     this.dst = '翻译错误'
                 })
             },
-            toggleGlobalCover(){
-                window.chrome.storage.sync.set({lzlGlobalUseCover: this.globalUse});
-                window.chrome.storage.sync.set({lzlGlobalUseCoverOpacity: this.slider});
-            }
         }
     }
 </script>
@@ -145,6 +152,21 @@
     }
     .box-card {
         width: 300px;
+    }
+    .slider-block{
+        width: 50px;
+        height: 19px;
+        display: inline-block;
+        float: right;
+        text-align: center;
+        position: relative;
+    }
+    .slider-block .display-dialog{
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
     .translate{
         min-height: 350px;

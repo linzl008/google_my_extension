@@ -1,48 +1,59 @@
+$SideLength: 120px;
+$interVal: 30px;
+$transition: 0.1s all ease;
 .note{
-  margin: 10px 5px 50px 5px;
-  text-align: left;
-  .box-card{
-    background: rgba(3, 7, 38, 0.5);
-    color:#fff;
-    width:290px;
-    margin-bottom: 10px;
-    position: relative;
-    .el-icon-close{
-      position: absolute;
-      top:5px;
-      right:5px;
-    }
-    .el-icon-edit{
-      position: absolute;
-      top:5px;
-      right:30px;
-    }
-    .tmp{
-      position: relative;
-      strong{
-        font-size: 30px;
-        vertical-align: top;
+  width: 720px;
+  margin: 50px 5px 50px 5px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  .tab-box{
+    width: $SideLength;
+    height: $SideLength;
+    color: #fff;
+    background-color: rgba(132, 147, 177, 0.8);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    text-decoration:none;
+    margin: $interVal;
+    transition: $transition ;
+    &.active{
+      width: $SideLength + 20px;
+      height: $SideLength + 20px;
+      margin: $interVal - 10px;
+      box-shadow: 0 0 20px 10px #ffffff ;
+      transition: 0.5s ease;
+      i{
+        display: block;
+        transition: 0.5s ease;
+        font-size:  $SideLength /1.5;
       }
-      .cond_txt{
-        font-size: 12px;
-        line-height: 16px;
-      }
-      .weather-logo{
-        width: 50px;
-        position: absolute;
-        top:0px;
-        right:0px
+
+      .word{
+        opacity: 0;
+        font-size: 0;
+        line-height: 0;
+        transition: 0.5s ease;
       }
     }
-    .time{
-      font-size: 12px;
-      line-height: 15px;
+    >div{
+      display: block;
+      width: 100%;
     }
-    .el-card__body{
-      padding: 10px
+    i{
+      display: block;
+      font-size:  $SideLength /3;
+      transition: $transition;
     }
-  }
-  .box-card.add{
-    border-style: dashed;
+    .word{
+      font-size: 16px;
+      line-height: 32px;
+      opacity: 1;
+      transition: $transition;
+    }
   }
 }

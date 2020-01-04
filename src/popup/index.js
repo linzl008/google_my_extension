@@ -6,6 +6,7 @@ Vue.component("app-component", AppComponent);
 import {
     Card,
     Button,
+    ButtonGroup,
     Slider,
     Tabs,
     TabPane,
@@ -17,6 +18,7 @@ import {
 
 Vue.use(Card);
 Vue.use(Button);
+Vue.use(ButtonGroup);
 Vue.use(Slider);
 Vue.use(Tabs);
 Vue.use(TabPane);

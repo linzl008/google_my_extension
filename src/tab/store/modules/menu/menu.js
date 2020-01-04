@@ -4,8 +4,11 @@ import *  as TYPE from './mutation-types'
 const state = {
     menu: [
         { label :"首页" ,icon:"el-icon-s-home" ,index:"/home", isShow:true},
+        { label :"应用" ,icon:"el-icon-thumb" ,index:"/game", isShow:true},
         { label :"设置" ,icon:"el-icon-s-tools" ,index:"/setting", isShow:true},
-        { label :"文件处理" ,icon:"el-icon-document" ,index:"/file", isShow:true},
+        { label :"首页" ,icon:"el-icon-s-home" ,index:"/home1", isShow:true},
+        { label :"应用" ,icon:"el-icon-thumb" ,index:"/game1", isShow:true},
+        { label :"设置" ,icon:"el-icon-s-tools" ,index:"/setting1", isShow:true},
     ],
 }
 

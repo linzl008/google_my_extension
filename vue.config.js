@@ -4,7 +4,7 @@ const path = require("path");
 
 // Generate pages object
 const pagesObj = {};
-const chromeName = ["popup", "options",'tab'];
+const chromeName = ["popup", "options",'tab','panel','panel/panel'];
 
 chromeName.forEach(name => {
   pagesObj[name] = {
@@ -23,6 +23,7 @@ const manifest =
     from: path.resolve("src/manifest.development.json"),
     to: `${path.resolve("dist")}/manifest.json`
   };
+
 // 复制images文件,icon图标
 const images =
  {
