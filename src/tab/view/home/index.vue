@@ -4,7 +4,7 @@
             <div class="weather-box"></div>
             <div class="middle-box">
                 <clock />
-                <el-input placeholder="请输入内容" v-model="keyWord"  @keyup.enter.native.prevent.once="search"  class="input-with-select">
+                <el-input placeholder="请输入内容" v-model="keyWord" @keyup.enter.native.stop.prevent="search"  class="input-with-select search-input">
                     <el-select v-model="select" slot="prepend" placeholder="请选择">
                         <el-option label="百度" value="baidu"></el-option>
                         <el-option label="谷歌" value="google"></el-option>
@@ -44,6 +44,7 @@
         },
         mounted(){
           this.initData()
+            // document.addEventListener()
         },
         methods:{
             initData(){

@@ -44,7 +44,6 @@
                 // 下：40
                 // 左：37
                 // 右：39
-              console.log(code);
               switch (code) {
                   case 38:
                       this.activeIndex = (this.activeIndex - this.lineNum * ( this.activeIndex > this.lineNum ) );

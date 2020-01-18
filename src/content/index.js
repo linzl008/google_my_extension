@@ -36,19 +36,23 @@ function todoTask(){
             })
         }
     });
+    window.chrome.storage.sync.get('hideBaiDuAdvert', function(data) {
+        if(Boolean(data.hideBaiDuAdvert)){
+            setBaiDuAdvert(1,true);
+        }
+    });
 }
 
 window.chrome.runtime.onMessage.addListener(function(request, sender, sendResponse)
 {
     dispatchMyEvent(request, sender, sendResponse)
-    sendResponse(request.cmd+' end！');
+    sendResponse(request.cmd+' end！-');
 });
 window.addEventListener("message", function(e)
 {
     dispatchMyEvent(e.data);
 }, false);
 function dispatchMyEvent(request) {
-    // Message.info('dispatchMyEvent')
     switch(request.cmd ){
         case 'test':
             alert(request.value);
@@ -56,10 +60,41 @@ function dispatchMyEvent(request) {
         case 'setCover':
             setCover(request.value);
             break;
+        case 'checkBaiDuAdvert':
+            setBaiDuAdvert(request.value);
+            break;
     }
 }
+
+/**
+ * 设置百度广告
+ */
+function setBaiDuAdvert(value,onload = true) {
+    console.log('enter');
+    if(!value) return
+    if(window.location.href.indexOf(/www.baidu.com/)>=0){
+        if(onload){
+            setTimeout(()=>{
+                removeAdvert()
+            })
+        }else{
+            removeAdvert()
+        }
+
+    }
+}
+function removeAdvert() {
+    var nodes = document.getElementsByClassName('ec_tuiguang_container')
+    for (let i = 0; i < nodes.length; i++) {
+        const node = nodes[i].parentNode.parentNode;
+        node.style.display = 'none'
+    }
+}
+
+/**
+ * 设置全局蒙层
+ * */
 function setCover(opacity) {
-    console.log('setCover',opacity);
     let myCoverDialog = document.getElementsByClassName('lzl-dialog')[0];
     if(myCoverDialog){
         myCoverDialog.style.outlineColor = 'rgba(0,0,0,' + opacity + ')';
@@ -71,7 +106,6 @@ function setCover(opacity) {
         div.style.outlineColor = 'rgba(0,0,0,' + opacity + ')';
     }
 }
-
 /**
  * 设置小说网站的背景
  */
@@ -81,6 +115,15 @@ function setWorkSite() {
         window.onload = function(){
                 document.getElementById('BookBody').style.background = 'none'
                 document.getElementById('BookTitle').style.fontWeight = 'normal'
+        }
+    }
+    if(window.location.href.indexOf('www.qianqianxsw.com')>=0){
+        window.onload = function(){
+                if(document.getElementsByClassName('navbar-fixed-top').length >0){
+                    document.getElementsByClassName('navbar-fixed-top')[0].style.display = 'none'
+                    document.getElementsByClassName('panel-heading')[0].style.display = 'none'
+                }
+                // document.getElementById('BookTitle').style.fontWeight = 'normal'
         }
     }
 }
