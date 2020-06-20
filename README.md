@@ -48,5 +48,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 6.21 增加百度翻译功能
 
 
+壁纸视频：
+https://pan.baidu.com/s/1T0yEtetl-5ty6M-0KTzJRw 提取码：b1lf 
+https://pan.baidu.com/s/1CgIZyK2PTYGaw8ayrkgDcQ 提取码：2rp6
+
 
 

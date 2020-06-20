@@ -53,13 +53,13 @@ import {
     Upload,
 
     Card,
+    Carousel,
+    CarouselItem,
    /* Progress,
     Badge,
     Rate,
     Steps,
     Step,
-    Carousel,
-    CarouselItem,
     Collapse,
     CollapseItem,
     Cascader,
@@ -129,8 +129,8 @@ Vue.use(Card);
 // Vue.use(Rate);
 // Vue.use(Steps);
 // Vue.use(Step);
-// Vue.use(Carousel);
-// Vue.use(CarouselItem);
+Vue.use(Carousel);
+Vue.use(CarouselItem);
 // Vue.use(Collapse);
 // Vue.use(CollapseItem);
 // Vue.use(Cascader);

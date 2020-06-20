@@ -1,6 +1,7 @@
 <template>
     <div class="layout">
         <div class="main-container">
+            <wallpaper></wallpaper>
             <el-container>
                 <router-view></router-view>
                 <!--<el-aside width="auto">
@@ -31,6 +32,7 @@
 
 <script>
     import { mapGetters } from 'vuex';
+    import wallpaper from '../../components/wallpaper/wallpaper'
     export default {
         name: 'app',
         data() {
@@ -39,6 +41,9 @@
                 isRouterAlive: true, //刷新当前页面
                 showMenuHeader:true,
             }
+        },
+        components:{
+            wallpaper,
         },
         computed: {
             ...mapGetters(
