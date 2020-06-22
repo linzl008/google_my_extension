@@ -46,10 +46,17 @@
         created(){
         },
         mounted(){
-          this.initData()
+            this.initData()
+            this.initSerial()
             // document.addEventListener()
         },
         methods:{
+            initSerial(){
+                console.log(chrome.serial);
+                chrome.serial.getDevices((DeviceInfo)=>{
+                    console.log(DeviceInfo)
+                })
+            },
             initData(){
                 this.myCities = JSON.parse(localStorage.getItem('lzl_weather_cities')||"[]");
             },

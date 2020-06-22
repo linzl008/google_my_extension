@@ -8,6 +8,7 @@ import router from "./router";
 
 import './plugins/element.js'
 import './assets/css/comment.scss'
+import './assets/css/font_ali/iconfont.css'
 new Vue({
     el: "#app",
     store,

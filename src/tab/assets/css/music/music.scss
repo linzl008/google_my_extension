@@ -1,0 +1,31 @@
+.music{
+  overflow-y: scroll;
+  overflow-x: auto;
+  .main-box{
+    position: relative;
+    width: 99.8%;
+    text-align: center;
+    display: flex;
+    .note-box{
+      width: 300px;
+    }
+    .weather-box{
+      width: 300px;
+    }
+    .middle-box{
+      flex:1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .el-select .el-input {
+      width: 130px;
+    }
+    .el-input {
+      width: 650px;
+    }
+    .input-with-select .el-input-group__prepend {
+      background-color: #fff;
+    }
+  }
+}

@@ -22,9 +22,9 @@ export default new Router({
                     component: () => import("./view/setting/index.vue"),
                 },
                 {
-                    path: "game",
-                    name: "game",
-                    component: () => import("./view/game/index.vue"),
+                    path: "music",
+                    name: "music",
+                    component: () => import("./view/music/index.vue"),
                 }
             ]
         }

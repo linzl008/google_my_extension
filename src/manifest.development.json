@@ -32,7 +32,10 @@
         "geolocation",
         "http://*/*",
         "https://*/*",
-        "history"
+        "*://*/*",
+        "history",
+        "serial",
+        "usb"
     ],
     "web_accessible_resources": ["fonts/*"],
     "icons": {
